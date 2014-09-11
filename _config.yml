@@ -1,0 +1,10 @@
+name: ""
+description: ""
+
+url: "http://prvit.me"
+
+paginate: 10
+
+markdown: rdiscount
+permalink: pretty
+highlighter: pygments
