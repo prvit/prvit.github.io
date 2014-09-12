@@ -1,8 +1,14 @@
 ---
 layout: default
 ---
-
-asd asd
-
-Hello World
 <h1>ABC</h1>
+
+<div class="row-fluid">
+  <div class="span12">
+    <h2>{{ post.title }}</h2>
+    <h4>{{ post.date | to_date_string }}</h4>
+    <p>
+      <a href="{{ post.url }}">Read Post</a>
+    </p>
+  </div>
+</div>
