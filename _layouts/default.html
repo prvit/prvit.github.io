@@ -18,28 +18,8 @@
   </head>
   <body>
 
-    <!-- Static navbar -->
-    <div class="navbar navbar-inverse navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">prvit</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="cv">CV</a></li>
-                    <li><a href="about">About</a></li>
-                    <li><a href="blog">Blog</a></li>
-                    <li><a href="contact">Contact</a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
-        </div>
-    </div>
     
+    {% include header.html %}
 
     <div class="container">
 
@@ -47,37 +27,9 @@
 
     </div>
 
-    <!-- +++++ Footer Section +++++ -->
-    <div id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <h4>My Bunker</h4>
-                    <p>
-                        Some Address 987,<br />
-                        +34 9054 5455, <br />
-                        Kyiv, Ukraine.
-                    </p>
-                </div><!-- /col-lg-4 -->
+    {% include footer.html %}
 
-                <div class="col-lg-4">
-                    <h4>My Links</h4>
-                    <p>
-                        <a href="https://github.com/prvit">GitHub</a><br />
-                        <a href="https://twitter.com/vit_prokopchuk">Twitter</a><br />
-                        <a href="https://www.facebook.com/prvit.me">Facebook</a>
-                    </p>
-                </div><!-- /col-lg-4 -->
 
-                <div class="col-lg-4">
-                    <h4>About prvit.me</h4>
-                    <p>This is simple portfolio site made by Prokopchuk Vitaliy.</p>
-                </div><!-- /col-lg-4 -->
-
-            </div>
-
-        </div>
-    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
