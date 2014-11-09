@@ -1,0 +1,104 @@
+﻿/* for fixed navbar */
+body
+{ 
+    padding-top: 50px;
+}
+.index-header
+{
+    width: 100%;
+    padding-bottom:40px;
+    padding-top:30px;
+    font-size: 24px;
+    color: white;
+    background-color: #F58723;
+    margin-bottom: 30px;
+}
+.index-header h1
+{
+    font-size: 60px;
+    line-height: 1;
+}
+
+#footer {    
+    background-color:#F58723;
+    width:100%;
+    color:white;
+}
+#footer a, #footer a:visited { 
+    color:white;
+}
+#footer a:active, #footer a:hover, #footer a:focus { 
+    color:white;
+    text-decoration:underline;
+}
+
+/* sharing stuff */
+.sharing-container
+{
+    position: fixed;
+    top: 40%;
+    left: 0;
+    right: auto;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    z-index: 11100;
+    overflow: hidden;
+    width: 64px;
+}
+.sharing-container .sharing-item
+{
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    cursor: pointer;
+}
+.sharing-container .sharing-item:hover
+{
+    width: 64px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.sharing-container .sharing-img
+{
+    display: inline-block;
+    margin: auto;
+    margin-top: 8px;
+    width: 32px;
+    height: 32px;
+    background-image: url(/Content/images/sharing32x32.png);
+}
+.sharing-container .sharing-fb
+{
+    background-color: #305891;
+}
+.sharing-container .sharing-fb .sharing-img
+{
+    background-position: 0px 0px;
+}
+.sharing-container .sharing-gp
+{
+    background-color: #CE4D39;
+}
+.sharing-container .sharing-gp .sharing-img
+{
+    background-position: 0px -32px;
+}
+.sharing-container .sharing-tw
+{
+    background-color: #2CA8D2
+}
+.sharing-container .sharing-tw .sharing-img
+{
+    background-position: 0px -64px;
+}
+.sharing-container .sharing-li
+{
+    background-color: #4498C8;
+}
+.sharing-container .sharing-li .sharing-img
+{
+    background-position: 0px -96px;
+}
