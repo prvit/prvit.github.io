@@ -1,0 +1,158 @@
+---
+const navLinks = [
+  { href: '#about', label: 'About' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#education', label: 'Education' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<header
+  id="site-nav"
+  class="fixed top-0 left-0 right-0 z-50 h-14 transition-all duration-300"
+  style="height: 56px;"
+>
+  <div
+    id="nav-inner"
+    class="h-full border-b transition-all duration-300"
+    style="border-color: transparent; background-color: transparent; backdrop-filter: none;"
+  >
+    <div class="max-w-site mx-auto h-full px-5 md:px-8 lg:px-12 flex items-center justify-between">
+      <!-- Logo / Name -->
+      <a
+        href="#"
+        class="font-mono text-sm font-medium transition-colors duration-150"
+        style="color: var(--color-text-secondary);"
+        aria-label="Vitalii Prokopchuk — home"
+      >
+        vitalii<span style="color: var(--color-accent);">@</span>prokopchuk<span style="color: var(--color-accent);">.</span>dev
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav aria-label="Site navigation" class="hidden md:flex items-center gap-6">
+        {navLinks.map(({ href, label }) => (
+          <a href={href} class="nav-link">{label}</a>
+        ))}
+      </nav>
+
+      <!-- CTA + Mobile Toggle -->
+      <div class="flex items-center gap-3">
+        <a
+          href="/cv.pdf"
+          download="Vitalii_Prokopchuk_CV.pdf"
+          class="hidden sm:inline-flex btn-primary text-xs px-3 py-1.5"
+          aria-label="Download CV PDF"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          CV
+        </a>
+
+        <!-- Mobile hamburger -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden p-2 rounded"
+          style="color: var(--color-text-secondary);"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg id="hamburger-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" y1="7" x2="20" y2="7"/>
+            <line x1="4" y1="12" x2="20" y2="12"/>
+            <line x1="4" y1="17" x2="20" y2="17"/>
+          </svg>
+          <svg id="close-icon" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden"
+    style="background-color: var(--color-surface); border-bottom: 1px solid var(--color-border);"
+    aria-label="Mobile navigation"
+  >
+    <nav class="max-w-site mx-auto px-5 py-4 flex flex-col gap-1">
+      {navLinks.map(({ href, label }) => (
+        <a
+          href={href}
+          class="mobile-nav-link py-2.5 text-sm transition-colors duration-150"
+          style="color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border-muted);"
+        >
+          {label}
+        </a>
+      ))}
+      <a
+        href="/cv.pdf"
+        download="Vitalii_Prokopchuk_CV.pdf"
+        class="mt-3 btn-primary justify-center"
+        aria-label="Download CV PDF"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download CV
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Nav scroll effect
+  const navInner = document.getElementById('nav-inner');
+  const onScroll = () => {
+    const scrolled = window.scrollY > 10;
+    if (navInner) {
+      if (scrolled) {
+        navInner.style.borderColor = 'var(--color-border)';
+        navInner.style.backgroundColor = 'rgba(10,10,10,0.85)';
+        navInner.style.backdropFilter = 'blur(12px)';
+        navInner.style.webkitBackdropFilter = 'blur(12px)';
+      } else {
+        navInner.style.borderColor = 'transparent';
+        navInner.style.backgroundColor = 'transparent';
+        navInner.style.backdropFilter = 'none';
+        navInner.style.webkitBackdropFilter = 'none';
+      }
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile menu toggle
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const hamburger = document.getElementById('hamburger-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    hamburger?.classList.toggle('hidden', !isOpen);
+    closeIcon?.classList.toggle('hidden', isOpen ?? true);
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      menu?.classList.add('hidden');
+      hamburger?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+      btn?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>

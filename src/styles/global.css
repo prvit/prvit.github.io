@@ -1,0 +1,154 @@
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg:            #0a0a0a;
+  --color-surface:       #111111;
+  --color-surface-2:     #1a1a1a;
+  --color-border:        #222222;
+  --color-border-muted:  #1a1a1a;
+  --color-text-primary:  #ededed;
+  --color-text-secondary:#888888;
+  --color-text-muted:    #555555;
+  --color-accent:        #c8d6e5;
+  --color-accent-subtle: #1a2230;
+  --color-success:       #3d9970;
+  --color-tag-bg:        #1c1c1c;
+  --color-tag-text:      #9ca3af;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  section[id] {
+    scroll-margin-top: 72px;
+  }
+}
+
+@layer components {
+  /* Experience card collapse/expand */
+  .exp-card-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 250ms ease;
+  }
+
+  .exp-card[data-open="true"] .exp-card-body {
+    grid-template-rows: 1fr;
+  }
+
+  .exp-card-body-inner {
+    overflow: hidden;
+  }
+
+  .exp-expand-icon {
+    transition: transform 200ms ease;
+  }
+
+  .exp-card[data-open="true"] .exp-expand-icon {
+    transform: rotate(180deg);
+  }
+
+  /* Tag pill */
+  .tag-pill {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded text-xs font-mono;
+    background-color: var(--color-tag-bg);
+    color: var(--color-tag-text);
+    border: 1px solid var(--color-border);
+  }
+
+  /* Ghost button */
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded border text-sm font-medium transition-colors duration-150;
+    border-color: var(--color-border);
+    color: var(--color-text-secondary);
+    background-color: transparent;
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background-color: var(--color-accent-subtle);
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded text-sm font-medium transition-colors duration-150;
+    background-color: var(--color-accent);
+    color: #0a0a0a;
+  }
+
+  .btn-primary:hover {
+    background-color: #d8e6f5;
+  }
+
+  /* Section eyebrow */
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-widest;
+    color: var(--color-text-muted);
+    letter-spacing: 0.12em;
+  }
+
+  /* Status badge */
+  .badge-live {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium;
+    background-color: rgba(61, 153, 112, 0.15);
+    color: var(--color-success);
+    border: 1px solid rgba(61, 153, 112, 0.3);
+  }
+
+  .badge-archived {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium;
+    background-color: var(--color-surface-2);
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+  }
+
+  .badge-current {
+    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium font-mono;
+    background-color: var(--color-accent-subtle);
+    color: var(--color-accent);
+    border: 1px solid rgba(200, 214, 229, 0.2);
+  }
+
+  /* Nav link */
+  .nav-link {
+    @apply text-sm transition-colors duration-150;
+    color: var(--color-text-secondary);
+  }
+
+  .nav-link:hover {
+    color: var(--color-text-primary);
+  }
+}

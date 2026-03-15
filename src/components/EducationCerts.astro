@@ -1,0 +1,161 @@
+---
+interface EducationItem {
+  degree: string;
+  institution: string;
+  location: string;
+  year: string;
+}
+
+interface CertItem {
+  name: string;
+  issuer: string;
+  date: string;
+  status: 'Active' | 'Expired';
+}
+
+const education: EducationItem[] = [
+  {
+    degree: 'Master in Computer Science',
+    institution: 'National Aviation University',
+    location: 'Kyiv, Ukraine',
+    year: '2015',
+  },
+  {
+    degree: 'Bachelor in Computer Science',
+    institution: 'National Aviation University',
+    location: 'Kyiv, Ukraine',
+    year: '2013',
+  },
+];
+
+const certifications: CertItem[] = [
+  {
+    name: 'Redis for .NET Developers',
+    issuer: 'Redis',
+    date: 'Oct 2023',
+    status: 'Active',
+  },
+  {
+    name: 'CCNA 1: Networking Basics',
+    issuer: 'Cisco',
+    date: '2009',
+    status: 'Expired',
+  },
+];
+---
+
+<section
+  id="education"
+  class="py-16 lg:py-24"
+  aria-labelledby="education-heading"
+>
+  <div class="max-w-site mx-auto px-5 md:px-8 lg:px-12">
+
+    <p class="eyebrow mb-4">Education &amp; Certifications</p>
+    <h2
+      id="education-heading"
+      class="text-2xl lg:text-3xl font-semibold mb-10"
+      style="color: var(--color-text-primary); letter-spacing: -0.02em;"
+    >
+      Background &amp; credentials
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+      <!-- Education -->
+      <div
+        class="rounded-lg p-5"
+        style="background-color: var(--color-surface); border: 1px solid var(--color-border);"
+      >
+        <h3
+          class="font-mono text-xs uppercase tracking-widest mb-5 pb-3"
+          style="color: var(--color-text-muted); letter-spacing: 0.12em; border-bottom: 1px solid var(--color-border);"
+        >
+          Education
+        </h3>
+
+        <div class="space-y-5">
+          {education.map((item) => (
+            <div>
+              <p
+                class="text-base font-medium leading-snug mb-1"
+                style="color: var(--color-text-primary);"
+              >
+                {item.degree}
+              </p>
+              <p
+                class="text-sm mb-0.5"
+                style="color: var(--color-text-secondary);"
+              >
+                {item.institution}
+              </p>
+              <p
+                class="font-mono text-xs"
+                style="color: var(--color-text-muted);"
+              >
+                {item.location} &middot; {item.year}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div
+        class="rounded-lg p-5"
+        style="background-color: var(--color-surface); border: 1px solid var(--color-border);"
+      >
+        <h3
+          class="font-mono text-xs uppercase tracking-widest mb-5 pb-3"
+          style="color: var(--color-text-muted); letter-spacing: 0.12em; border-bottom: 1px solid var(--color-border);"
+        >
+          Certifications
+        </h3>
+
+        <div class="space-y-5">
+          {certifications.map((cert) => (
+            <div>
+              <div class="flex items-start justify-between gap-2 mb-0.5">
+                <p
+                  class="text-base font-medium leading-snug"
+                  style="color: var(--color-text-primary);"
+                >
+                  {cert.name}
+                </p>
+                {cert.status === 'Expired' && (
+                  <span
+                    class="flex-shrink-0 font-mono text-xs px-1.5 py-0.5 rounded mt-0.5"
+                    style="background-color: var(--color-surface-2); color: var(--color-text-muted); border: 1px solid var(--color-border);"
+                  >
+                    Expired
+                  </span>
+                )}
+                {cert.status === 'Active' && (
+                  <span
+                    class="flex-shrink-0 font-mono text-xs px-1.5 py-0.5 rounded mt-0.5"
+                    style="background-color: rgba(61, 153, 112, 0.1); color: var(--color-success); border: 1px solid rgba(61, 153, 112, 0.25);"
+                  >
+                    Active
+                  </span>
+                )}
+              </div>
+              <p
+                class="text-sm mb-0.5"
+                style="color: var(--color-text-secondary);"
+              >
+                {cert.issuer}
+              </p>
+              <p
+                class="font-mono text-xs"
+                style="color: var(--color-text-muted);"
+              >
+                {cert.date}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

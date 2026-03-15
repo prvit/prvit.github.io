@@ -1,0 +1,169 @@
+---
+type ProjectStatus = 'Live' | 'Archived';
+
+interface Project {
+  name: string;
+  company: string;
+  period: string;
+  status: ProjectStatus;
+  description: string;
+  url?: string;
+  tech: string[];
+  isFlagship?: boolean;
+}
+
+const projects: Project[] = [
+  {
+    name: 'Chevron Retail Platform',
+    company: 'PAR Technology',
+    period: 'May 2021 — Present',
+    status: 'Live',
+    description: 'Backend infrastructure powering Chevron\'s fuel retail mobile apps and rewards platform. Serving 8M+ users with real-time loyalty processing, transaction management, and multi-provider integration during OpenCommerce migration.',
+    tech: ['C#', '.NET', 'ASP.NET Core', 'GraphQL', 'Azure', 'Redis', 'Azure Service Bus', 'SQL Server'],
+    isFlagship: true,
+  },
+  {
+    name: 'Strategic Window',
+    company: 'Strategic Vision',
+    period: 'May 2017 — May 2021',
+    status: 'Live',
+    description: 'Real-time survey analytics platform for automotive manufacturers. Processes and visualizes large-scale consumer research data for Fortune 100 clients.',
+    url: 'https://www.strategicvision.com/strategic-window',
+    tech: ['C#', '.NET Core', 'ASP.NET Core Web API', 'React', 'Redux', 'SQL Server', 'Qualtrics APIs'],
+  },
+  {
+    name: 'One Button Solution',
+    company: 'Strategic Vision',
+    period: 'May 2017 — May 2021',
+    status: 'Live',
+    description: 'Automated reporting and insight platform built on large-scale automotive survey data. NLP pipelines process hundreds of thousands of verbatims and generate structured reports.',
+    url: 'https://www.strategicvision.com/obs',
+    tech: ['C#', '.NET', 'ML.NET', 'IBM Watson', 'SQL Server'],
+  },
+  {
+    name: 'LetMePark Platform',
+    company: 'LetMePark (Co-founder & CTO)',
+    period: 'Jul 2017 — Oct 2019',
+    status: 'Live',
+    description: 'Parking reservation platform operating across 1,000+ facilities in Europe. Built from zero to production as sole technical founder — mobile apps, license plate recognition, and partner integrations.',
+    url: 'https://letmepark.app/en',
+    tech: ['.NET', 'Node.js', 'iOS', 'Azure', 'SQL Server'],
+  },
+  {
+    name: 'i.materialise',
+    company: 'Materialise',
+    period: 'Nov 2014 — May 2017',
+    status: 'Archived',
+    description: 'Consumer 3D printing marketplace with browser-based WebGL 3D model viewer and public API platform for third-party integrations.',
+    url: 'https://i.materialise.com/en',
+    tech: ['C#', '.NET', 'ASP.NET MVC', 'Angular.js', 'WebGL'],
+  },
+];
+---
+
+<section
+  id="projects"
+  class="py-16 lg:py-24"
+  aria-labelledby="projects-heading"
+>
+  <div class="max-w-site mx-auto px-5 md:px-8 lg:px-12">
+
+    <p class="eyebrow mb-4">Projects</p>
+    <h2
+      id="projects-heading"
+      class="text-2xl lg:text-3xl font-semibold mb-10"
+      style="color: var(--color-text-primary); letter-spacing: -0.02em;"
+    >
+      What I've built
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {projects.map((project) => (
+        <article
+          class={`rounded-lg p-5 flex flex-col${project.isFlagship ? ' md:col-span-2' : ''}`}
+          style={`background-color: var(--color-surface); border: 1px solid ${project.isFlagship ? 'var(--color-accent-subtle)' : 'var(--color-border)'};${project.isFlagship ? ' border-left: 3px solid var(--color-accent);' : ''}`}
+          aria-label={`Project: ${project.name}`}
+        >
+          <!-- Header row -->
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <div class="min-w-0">
+              <div class="flex flex-wrap items-center gap-2 mb-1">
+                <span
+                  class="font-mono text-sm"
+                  style="color: var(--color-text-secondary);"
+                >
+                  {project.company}
+                </span>
+                {project.status === 'Live' ? (
+                  <span class="badge-live" aria-label="Project status: Live">
+                    <span class="w-1.5 h-1.5 rounded-full bg-current" aria-hidden="true"></span>
+                    Live
+                  </span>
+                ) : (
+                  <span class="badge-archived" aria-label="Project status: Archived">
+                    Archived
+                  </span>
+                )}
+                {project.isFlagship && (
+                  <span
+                    class="font-mono text-xs px-2 py-0.5 rounded"
+                    style="background-color: var(--color-accent-subtle); color: var(--color-accent);"
+                  >
+                    Flagship
+                  </span>
+                )}
+              </div>
+              <h3
+                class="text-xl font-medium leading-snug"
+                style="color: var(--color-text-primary);"
+              >
+                {project.name}
+              </h3>
+            </div>
+
+            {project.url && (
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex-shrink-0 p-1.5 rounded transition-colors duration-150"
+                style="color: var(--color-text-muted);"
+                aria-label={`Visit ${project.name} (opens in new tab)`}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            )}
+          </div>
+
+          <!-- Period -->
+          <p
+            class="font-mono text-xs mb-3"
+            style="color: var(--color-text-muted);"
+          >
+            {project.period}
+          </p>
+
+          <!-- Description -->
+          <p
+            class="text-sm leading-relaxed mb-4 flex-1"
+            style="color: var(--color-text-secondary);"
+          >
+            {project.description}
+          </p>
+
+          <!-- Tech tags -->
+          <div class="flex flex-wrap gap-1.5" aria-label={`Technologies: ${project.tech.join(', ')}`}>
+            {project.tech.map((tag) => (
+              <span class="tag-pill">{tag}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>

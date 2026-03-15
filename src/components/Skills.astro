@@ -1,0 +1,84 @@
+---
+interface SkillCategory {
+  category: string;
+  skills: string[];
+}
+
+const skillGroups: SkillCategory[] = [
+  {
+    category: 'Languages',
+    skills: ['C#', 'TypeScript', 'JavaScript'],
+  },
+  {
+    category: 'Backend',
+    skills: ['.NET', 'ASP.NET Core', 'Node.js', 'GraphQL', 'REST APIs'],
+  },
+  {
+    category: 'Cloud & Infra',
+    skills: ['Azure', 'Azure Functions', 'Azure Service Bus', 'Redis', 'Docker', '.NET Aspire'],
+  },
+  {
+    category: 'Frontend',
+    skills: ['React', 'Redux', 'Angular'],
+  },
+  {
+    category: 'Data',
+    skills: ['SQL Server', 'Dapper', 'Entity Framework', 'Redis', 'PostgreSQL', 'MySQL', 'MongoDB'],
+  },
+  {
+    category: 'ML / NLP',
+    skills: ['ML.NET', 'IBM Watson'],
+  },
+  {
+    category: 'AI-assisted Dev',
+    skills: ['Cursor', 'Claude Code', 'GitHub Copilot', 'OpenAI Codex', 'Ollama', 'LM Studio'],
+  },
+];
+---
+
+<section
+  id="skills"
+  class="py-16 lg:py-24"
+  aria-labelledby="skills-heading"
+>
+  <div class="max-w-site mx-auto px-5 md:px-8 lg:px-12">
+
+    <p class="eyebrow mb-4">Skills</p>
+    <h2
+      id="skills-heading"
+      class="text-2xl lg:text-3xl font-semibold mb-10"
+      style="color: var(--color-text-primary); letter-spacing: -0.02em;"
+    >
+      Tools of the trade
+    </h2>
+
+    <div
+      class="rounded-lg p-6 space-y-4"
+      style="background-color: var(--color-surface); border: 1px solid var(--color-border);"
+    >
+      {skillGroups.map(({ category, skills }) => (
+        <div class="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-0">
+          <!-- Category label -->
+          <div
+            class="sm:w-[180px] flex-shrink-0 pt-0.5"
+            aria-label={`Category: ${category}`}
+          >
+            <span class="eyebrow">{category}</span>
+          </div>
+
+          <!-- Tag pills -->
+          <div
+            class="flex flex-wrap gap-1.5 flex-1"
+            role="list"
+            aria-label={`${category} skills`}
+          >
+            {skills.map((skill) => (
+              <span class="tag-pill" role="listitem">{skill}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

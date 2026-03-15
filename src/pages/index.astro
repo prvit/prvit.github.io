@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Experience from '../components/Experience.astro';
+import Projects from '../components/Projects.astro';
+import Skills from '../components/Skills.astro';
+import EducationCerts from '../components/EducationCerts.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="Vitalii Prokopchuk — Senior Software Engineer | Distributed Systems | .NET & Azure"
+  description="Senior Software Engineer with 14+ years designing and scaling distributed systems. Deep expertise in .NET and Azure. Currently building backend infrastructure for Chevron's fuel retail platform at PAR Technology. Based in Krakow, Poland."
+>
+  <Nav />
+
+  <main id="main-content" tabindex="-1">
+    <Hero />
+    <About />
+    <Experience />
+    <Projects />
+    <Skills />
+    <EducationCerts />
+    <Contact />
+  </main>
+
+  <Footer />
+</Base>
